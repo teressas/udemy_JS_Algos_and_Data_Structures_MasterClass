@@ -27,15 +27,13 @@ function validAnagram(str, str2){
         // console.log("2",frequencyCounter2)
     }
     // if the count of one letter in string 1 doesn't match the count of that same letter in string 2 then return false
-    for(let key in frequencyCounter1){
+    for(let key in frequencyCounter1) {
         if(frequencyCounter1[key] !== frequencyCounter2[key]){
             return false
         } 
     }
-    
     // return true if it matches
     return true
-    
 }
 console.log(validAnagram('',''))
 console.log(validAnagram('aaz', 'zza'))
