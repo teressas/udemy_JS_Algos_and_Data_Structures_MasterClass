@@ -41,5 +41,9 @@ function maxSubarraySum(array, n) {
         maxSum = Math.max(maxSum, tempSum)
     }
     return maxSum;
-}
-console.log(maxSubarraySum([2,6,9,2,1,8,5,6,3],3))
+}  
+//                                    [max ]
+// console.log(maxSubarraySum([2,6,9,2,1,8,5,6,3],3))
+//                                        i                                
+//                                      [temp]     
+console.log(maxSubarraySum([-3,4,0,-2.6,-1], 2)) // 5
