@@ -11,8 +11,13 @@
 * Depth First Search
 * going down until the end of the tree and then coming back up
 * 3 main orders:
-    * InOrder [3,6,8,10,15,20]
+    * InOrder [3,6,8,10,15,20] 
+        * order is lowest to highest
+        * used commonly with BSTs 
     * PreOrder [10,6,3,8,15,20]
+        * useful if you want to clone or duplicate a tree
+        * store the tree, flatten it out to store in a file or database
+        * result array or list is in an order you can reconstruct the tree
     * PostOrder [3,8,6,20,15,10]
 */
 class Node {
@@ -126,8 +131,52 @@ class Tree {
         traverse(current);
         return data;
     }
-
-    DFSPostOrder(){}
+    /* DFS - PostOrder
+        * [3,8,6,20,15,10]
+        * create a variable to store the values of nodes visited
+        * store the root of the BST in a variable called current
+        * write a helper function which accepts a node
+            * if the node has a left property, call the helper function with the left property on the node
+            * if the node has a right property, call the helper function with the right property on the node
+            * push the value of the node to the variable that stores the values
+        * invoke the helper function with the current variable
+        * return the array of values
+    */
+    DFSPostOrder(){
+        let data = [];
+        let current = this.root;
+        
+        let traverse = (node) => {
+            if(node.left) traverse(node.left);
+            if(node.right) traverse(node.right);
+            data.push(node.value);
+        }
+        traverse(current);
+        return data;
+    }
+    /* DFS - In Order
+        * [3,6,8,10,15,20]
+        * create a variable to store the values of nodes visited
+        * store the root of the BST in a variable called current
+        * write a helper function which accepts a node
+            * if the node has a left property, call the helper function with the left property on the node
+            * push the value of the node to the variable that stores the values
+            * if the node has a right property, call the helper function with the right property on the node
+        * invoke the helper function with the current variable
+        * return the array of values
+    */
+    DFSInOrder(){
+        let data = [];
+        let current = this.root;
+        
+        let traverse = (node) => {
+            if(node.left) traverse(node.left);
+            data.push(node.value);
+            if(node.right) traverse(node.right);
+        }
+        traverse(current);
+        return data;
+    }
 }
 
 let tree = new Tree();
@@ -140,5 +189,8 @@ tree.root.right.right = new Node(20);
 // console.log(tree)
 
 
-
 console.log(tree.DFSPreOrder())
+
+console.log(tree.DFSPostOrder())
+
+console.log(tree.DFSInOrder())
